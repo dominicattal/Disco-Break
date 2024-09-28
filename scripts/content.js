@@ -1,3 +1,8 @@
+const imgWidth = 128;
+const imgHeight = 128;
+const ballWidthRange = 200;
+const ballHeightRange = 350;
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
@@ -7,7 +12,7 @@ function createLine(xoff, yoff) {
     const hrzline = document.createElement('div');
     hrzline.classList.add("vertical-line");
     hrzline.style.height = `${yoff}px`;
-    hrzline.style.left = `${xoff + 64}px`;
+    hrzline.style.left = `${xoff}px`;
     return hrzline;
 }
 
@@ -17,22 +22,25 @@ function createDiscoBall(xoff, yoff) {
     img.classList.add("disco-ball");
     img.src = chrome.runtime.getURL("icons/icon128.png");
     img.alt = "DISCO";
-    img.style.width = "128px";
-    img.style.length = "128px";
+    img.style.width = `${imgWidth}px`;
+    img.style.length = `${imgHeight}px`;
     img.style.position = "fixed";
-    img.style.top = `${yoff}px`;
-    img.style.left = `${xoff}px`;
+    img.style.top = `${yoff - imgHeight / 2}px`;
+    img.style.left = `${xoff - imgWidth / 2}px`;
     return img;
 }
 
 function discoBalls() {
     const div = document.createElement('div');
     div.classList.add("disco-ball-container");
-    let xoff = getRandomInt(window.innerWidth);
-    let yoff = getRandomInt(window.innerHeight);
-    console.log(window.clientHeight);
-    div.appendChild(createDiscoBall(xoff, yoff));
-    div.appendChild(createLine(xoff, yoff));
+    let xoff = imgWidth / 2 + getRandomInt(ballWidthRange / 2);
+    // getRandomInt(window.innerWidth - imgWidth)
+    while (xoff < window.innerWidth - imgWidth / 2) {
+        let yoff = window.innerHeight / 2 - ballHeightRange / 2 + getRandomInt(ballHeightRange);
+        div.appendChild(createLine(xoff, yoff));
+        div.appendChild(createDiscoBall(xoff, yoff));
+        xoff += imgWidth + getRandomInt(ballWidthRange - imgWidth);
+    }
     document.body.appendChild(div);
 }
 
