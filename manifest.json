@@ -3,7 +3,7 @@
     "name": "Disco Break",
     "description": "A Chrome extension to inject disco vibes into your work day.",
     "version": "1.0",
-    "permissions": ["activeTab", "storage", "audioCaputre"],
+    "permissions": ["activeTab", "storage", "audioCaputre", "scripting"],
     "background": {
       "service_worker": "background.js"
     },
