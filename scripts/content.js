@@ -72,6 +72,24 @@ function startDisco() {
     document.body.appendChild(div);
 }
 
+function resizeDisco() {
+    const divs = Array.from(document.getElementsByClassName("disco-ball-container"));
+    for (let div of divs) {
+        div.remove();
+    }
+    const div = document.createElement('div');
+    div.classList.add("disco-ball-container");
+    let xoff = imgWidth / 2 + getRandomInt(ballWidthRange / 2);
+    div.appendChild(createLights());
+    while (xoff < window.innerWidth - imgWidth / 2) {
+        let yoff = window.innerHeight / 2 - 3 * ballHeightRange / 4 + getRandomInt(ballHeightRange);
+        div.appendChild(createLine(xoff, yoff));
+        div.appendChild(createDiscoBall(xoff, yoff));
+        xoff += imgWidth + getRandomInt(ballWidthRange - imgWidth);
+    }
+    document.body.appendChild(div);
+}
+
 function stopDisco() {
     if (!discoActive)
         return;
@@ -82,17 +100,29 @@ function stopDisco() {
     }   
 }
 
-const submitButton = document.getElementById("Submit");
-if (submitButton) {
-    submitButton.addEventListener('click', () => {
+document.addEventListener('keydown', (e) => {
+    console.log(e);
+    if (e.key == 'e') {
         startDisco();
-    });
+    } else if (e.key == 'q') {
+        stopDisco();
+    }
+});
+
+const buttons = Array.from(document.getElementsByTagName("button"));
+
+for (let button of buttons) {
+    console.log(button, button.type, button.className);
+    if (button.type === "submit") {
+        button.addEventListener('click', () => {
+            startDisco();
+        });
+    }
 }
 
-document.addEventListener('keypress', (e) => {
-    console.log(e);
-    if (e.key == 'q') {
-        stopDisco();
+window.addEventListener('resize', () => {
+    if (discoActive) {
+        resizeDisco();
     }
 });
 
