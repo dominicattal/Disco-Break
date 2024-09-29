@@ -63,3 +63,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         stopDisco();
     }
 });
+
+document.addEventListener('click', function(event) {
+    if (event.target.tagName === 'BUTTON' || event.target.type === 'submit') {
+        chrome.runtime.sendMessage({action: 'openPopup'});
+    }
+});
+

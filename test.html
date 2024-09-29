@@ -1,38 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Page for Chrome Extension</title>
+    <title>Disco Popup</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px 0;
+        .popup-content {
+            padding: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Test Page for Chrome Extension</h1>
-    <button id="testButton">Click Me</button>
-    <form id="testForm">
-        <input type="text" placeholder="Type something..." required>
-        <button type="submit">Submit</button>
-    </form>
-
-    <script>
-        document.getElementById('testButton').addEventListener('click', function() {
-            console.log('Button clicked!');
-        });
-
-        document.getElementById('testForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            console.log('Form submitted!');
-        });
-    </script>
+    <div class="popup-content">
+        <button id="Submit">Submit </button>
+    </div>
+    <script src="popup.js"></script>
 </body>
 </html>
