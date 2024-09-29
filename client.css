@@ -1,8 +1,12 @@
 .vertical-line {
-    width: 1px;
+    width: 2px;
     background-color: black;
     height: 50%; 
     position: fixed;
     left: 50%;
     top: 0px;
   }
+
+.disco-ball-container {
+    opacity: 0.5;
+}
