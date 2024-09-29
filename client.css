@@ -6,3 +6,7 @@
     left: 50%;
     top: 0px;
   }
+
+.disco-ball-container {
+    opacity: 0.5;
+}

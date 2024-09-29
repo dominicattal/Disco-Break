@@ -10,7 +10,8 @@
     "web_accessible_resources": [
         {
             "matches": ["<all_urls>"],
-            "resources": ["icons/icon128.png"]
+            "resources": ["icons/icon128.png", "icons/lights.gif", "assets/dancing.mp3", "assets/disco.mp3", 
+                          "assets/iwll.mp3", "assets/murder.mp3", "assets/sep.mp3", "assets/stayin.mp3", "assets/you.mp3"]
         }
     ],
     "content_scripts": [
