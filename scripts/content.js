@@ -30,7 +30,11 @@ function createDiscoBall(xoff, yoff) {
     return img;
 }
 
-function discoBalls() {
+function addLights() {
+
+}
+
+function startDisco() {
     const div = document.createElement('div');
     div.classList.add("disco-ball-container");
     let xoff = imgWidth / 2 + getRandomInt(ballWidthRange / 2);
@@ -44,9 +48,18 @@ function discoBalls() {
     document.body.appendChild(div);
 }
 
+function stopDisco() {
+    console.log("A");
+    const divs = Array.from(document.getElementsByClassName("disco-ball-container"));
+    for (let div of divs) {
+        div.remove();
+    }   
+}
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    console.log(request);
-    if (request.action == "discoBalls") {
-        discoBalls();
+    if (request.action == "start") {
+        startDisco();
+    } else if (request.action == "stop") {
+        stopDisco();
     }
 });
