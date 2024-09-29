@@ -89,6 +89,13 @@ if (submitButton) {
     });
 }
 
+document.addEventListener('keypress', (e) => {
+    console.log(e);
+    if (e.key == 'q') {
+        stopDisco();
+    }
+});
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action == "start") {
         startDisco();
